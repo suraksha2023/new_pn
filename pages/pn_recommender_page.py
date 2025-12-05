@@ -13,7 +13,7 @@ def snap(driver, step_name):
     driver.save_screenshot(file_path)
     print(f"📸 Screenshot saved: {file_path}")
 
-class SOPRecommenderPage:
+class PNRecommenderPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 30)

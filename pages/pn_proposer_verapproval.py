@@ -14,7 +14,7 @@ def snap(driver, step_name):
     print(f"📸 Screenshot saved: {file_path}")
 
 
-class SOPProposerApproval:
+class PNProposerApproval:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 30)
@@ -25,7 +25,8 @@ class SOPProposerApproval:
 
         # Step 1️⃣ Navigate to Under-Review Docs
         self.wait.until(EC.element_to_be_clickable((By.XPATH, "//label[@class='switch-menu']"))).click()
-        self.wait.until(EC.element_to_be_clickable((By.XPATH, "//i[@class='bi bi-file-earmark-text nav-icon']"))).click()
+        self.wait.until(
+            EC.element_to_be_clickable((By.XPATH, "//i[@class='bi bi-file-earmark-text nav-icon']"))).click()
         self.wait.until(EC.element_to_be_clickable((By.XPATH, "//a[text()='Under-Review Docs']"))).click()
         snap(driver, "under_review_docs_opened")
 
@@ -67,17 +68,26 @@ class SOPProposerApproval:
         driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
         time.sleep(1)
 
-        self.wait.until(EC.element_to_be_clickable((By.ID, "page_no_confirmation"))).click()
-        time.sleep(5)
+        page_no_btn = self.wait.until(
+            EC.element_to_be_clickable((By.ID, "page_no_confirmation"))
+        )
+        driver.execute_script("arguments[0].click();", page_no_btn)
+        time.sleep(2)
+
+        # Version
         version_input = self.wait.until(EC.element_to_be_clickable((By.ID, "version_no")))
         version_input.clear()
         version_input.send_keys("2")
+
+        # Effective date
         effective_date = self.wait.until(EC.presence_of_element_located((By.ID, "effective_date")))
         driver.execute_script("arguments[0].value = arguments[1];", effective_date, "2025-11-06")
 
+        # Approved date
         approved_date = self.wait.until(EC.presence_of_element_located((By.ID, "approved_on")))
         driver.execute_script("arguments[0].value = arguments[1];", approved_date, "2025-11-06")
 
+        # Summary
         summary = self.wait.until(EC.element_to_be_clickable((By.ID, "summary_changes")))
         summary.send_keys("all ok")
         time.sleep(5)

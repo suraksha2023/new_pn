@@ -2,11 +2,11 @@ import time
 import pytest
 from utilities.data_access import read_pn_data
 from pages.login_page import LoginPage
-from pages.pn_proposer_page import SOPProposerPage
-from pages.pn_recommender_page import SOPRecommenderPage
+from pages.pn_proposer_page import PNProposerPage
+from pages.pn_recommender_page import PNRecommenderPage
 from pages.pn_approver_page import PNApproverPage
-from pages.pn_proposer_verapproval import SOPProposerApproval
-from pages.pn_published import SOPPublishPage
+from pages.pn_proposer_verapproval import PNProposerApproval
+from pages.pn_published import PNPublishPage
 
 # Load Excel data once
 raw_pn_data = read_pn_data("data/pn_data.xlsx")
@@ -27,11 +27,11 @@ approver_roles = [f"Approver{i}" for i in range(1, 7)]
 @pytest.mark.parametrize("data", pn_data)
 def test_sop_full_flow_ddt(driver, data):
     login = LoginPage(driver)
-    proposer = SOPProposerPage(driver)
-    recommender = SOPRecommenderPage(driver)
+    proposer = PNProposerPage(driver)
+    recommender = PNRecommenderPage(driver)
     approver = PNApproverPage(driver)
-    proposer_approval = SOPProposerApproval(driver)
-    publisher = SOPPublishPage(driver)
+    proposer_approval = PNProposerApproval(driver)
+    publisher = PNPublishPage(driver)
 
     # Extract fields from the current row
     role = data["role"]

@@ -11,7 +11,7 @@ def snap(driver, step_name):
     file_path = os.path.join("screenshots", f"{step_name}_{timestamp}.png")
     driver.save_screenshot(file_path)
 
-class SOPPublishPage:
+class PNPublishPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 30)

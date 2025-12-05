@@ -15,7 +15,7 @@ def snap(driver, step_name):
     print(f"📸 Screenshot saved: {file_path}")
 
 
-class SOPProposerPage:
+class PNProposerPage:
     def __init__(self, driver):
         self.driver = driver
         self.wait = WebDriverWait(driver, 30)
