@@ -39,23 +39,23 @@ pipeline {
             }
         }
 
-        stage('OTP Input Required') {
-            steps {
-                script {
-                    def otp = input(
-                        message: 'Enter OTP to continue',
-                        parameters: [string(name: 'OTP_CODE', description: 'Enter OTP here')]
-                    )
-                    env.OTP_VALUE = otp
-                }
-            }
-        }
+//         stage('OTP Input Required') {
+//             steps {
+//                 script {
+//                     def otp = input(
+//                         message: 'Enter OTP to continue',
+//                         parameters: [string(name: 'OTP_CODE', description: 'Enter OTP here')]
+//                     )
+//                     env.OTP_VALUE = otp
+//                 }
+//             }
+//         }
 
-        stage('Continue After OTP') {
-            steps {
-                echo "OTP entered: ${env.OTP_VALUE}"
-            }
-        }
+//         stage('Continue After OTP') {
+//             steps {
+//                 echo "OTP entered: ${env.OTP_VALUE}"
+//             }
+//         }
 
         stage('Publish Report') {
             steps {
