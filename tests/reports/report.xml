@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.542" timestamp="2025-11-18T12:37:18.515379+05:30" hostname="suraksha-HP-ProBook-440-G7"><testcase classname="" name="new_code.PN.tests.test_sop_full_ddt" time="0.000"><error message="collection failure">test_sop_full_ddt.py:12: in &lt;module&gt;
+    sop_data = read_sop_data("data/sop_data.xlsx")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+../utilities/data_access.py:4: in read_sop_data
+    workbook = openpyxl.load_workbook(filepath)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/home/suraksha/docTrack/DOCTRACK_LIVE/.venv/lib/python3.12/site-packages/openpyxl/reader/excel.py:346: in load_workbook
+    reader = ExcelReader(filename, read_only, keep_vba,
+/home/suraksha/docTrack/DOCTRACK_LIVE/.venv/lib/python3.12/site-packages/openpyxl/reader/excel.py:123: in __init__
+    self.archive = _validate_archive(fn)
+                   ^^^^^^^^^^^^^^^^^^^^^
+/home/suraksha/docTrack/DOCTRACK_LIVE/.venv/lib/python3.12/site-packages/openpyxl/reader/excel.py:95: in _validate_archive
+    archive = ZipFile(filename, 'r')
+              ^^^^^^^^^^^^^^^^^^^^^^
+/usr/lib/python3.12/zipfile/__init__.py:1331: in __init__
+    self.fp = io.open(file, filemode)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: 'data/sop_data.xlsx'</error></testcase></testsuite></testsuites>
